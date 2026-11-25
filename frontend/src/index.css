@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "leaflet/dist/leaflet.css";
+
+/* shadcn theme, mapped to the TasteMap palette */
+:root {
+  --background: #FBF4E6;
+  --foreground: #1B2340;
+  --card: #FFFFFF;
+  --card-foreground: #1B2340;
+  --popover: #FBF4E6;
+  --popover-foreground: #1B2340;
+  --primary: #F2705F;
+  --primary-foreground: #1B2340;
+  --secondary: #F6D869;
+  --secondary-foreground: #1B2340;
+  --muted: #F1EAD6;
+  --muted-foreground: #5A607A;
+  --accent: #FBE9A8;
+  --accent-foreground: #1B2340;
+  --destructive: #B8341F;
+  --border: #E6DAC0;
+  --input: #E0D3B6;
+  --ring: #1B2340;
+  --radius: 1rem;
+  --brand: #D94A33;
+  --sage: #D3DEC6;
+  --sky: #CFE0EC;
+  --butter: #F6D869;
+}
+
+@theme inline {
+  --font-sans: 'Figtree', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Caprasimo', Georgia, serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-sage: var(--sage);
+  --color-sky: var(--sky);
+  --color-butter: var(--butter);
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  body { @apply bg-background text-foreground font-sans antialiased; }
+  h1, h2, h3 { @apply font-display font-normal; }
+}
+
+/* Typography, defined once */
+@layer components {
+  .text-title { @apply font-display text-[27px] leading-[1.12]; }
+  .text-display { @apply font-display text-4xl leading-none; }
+  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground; }
+  .meta { @apply text-[13px] text-muted-foreground; }
+  .field { @apply h-11 w-full rounded-xl border-[1.5px] border-input bg-card px-3.5 text-sm outline-none placeholder:text-muted-foreground focus-visible:border-foreground focus-visible:ring-[3px] focus-visible:ring-ring/20; }
+}
+
+/* Map */
+.leaflet-container { font-family: var(--font-sans); background: var(--muted); }
+.leaflet-tile-pane { filter: sepia(.25) saturate(.85); }
+.tm-pin { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; border-radius: 9999px; font-family: var(--font-display); border: 3px solid var(--background); transition: transform .15s; }
+.tm-pin:hover { transform: scale(1.12); }
+.tm-ranked { background: var(--foreground); color: var(--background); font-size: 15px; }
+.tm-want { background: var(--butter); border-color: var(--primary); }
+.tm-sel { background: var(--primary); color: var(--foreground); border-color: var(--foreground); box-shadow: 0 0 0 5px var(--background); font-size: 22px; }
